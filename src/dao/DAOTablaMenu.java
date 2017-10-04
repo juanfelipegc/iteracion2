@@ -16,10 +16,13 @@ public class DAOTablaMenu {
 	
 	private Connection co;
 	
-	public DAOTablaMenu(Connection co){
+	public DAOTablaMenu(){
 		super();
-		this.co = co;
 		recursos = new ArrayList<>();
+	}
+	
+	public void setConnection(Connection co){
+		this.co = co;
 	}
 	
 	public void cerrarRecursos() {
@@ -33,7 +36,7 @@ public class DAOTablaMenu {
 		}
 	}
 	
-	public ArrayList<Menu> getMenu() throws SQLException, Exception {
+	public ArrayList<Menu> getMenus() throws SQLException, Exception {
 		ArrayList<Menu> menu = new ArrayList<Menu>();
 
 		String sql = "SELECT * FROM MENU";
@@ -56,8 +59,8 @@ public class DAOTablaMenu {
 		return menu;
 	}
 	
-	public ArrayList<Menu> buscarMenuPorId(String id) throws SQLException, Exception {
-		ArrayList<Menu> menu = new ArrayList<Menu>();
+	public Menu buscarMenuPorId(Long id) throws SQLException, Exception {
+		Menu menu = null;
 
 		String sql = "SELECT * FROM MENU WHERE ID_MENU ='" + id + "'";
 
@@ -74,12 +77,12 @@ public class DAOTablaMenu {
 			Long producto3 = rs.getLong("PRODUCTO3");
 			Long producto4 = rs.getLong("PRODUCTO4");
 			Long producto5 = rs.getLong("PRODUCTO5");
-			menu.add(new Menu(nombre,id2,precio,producto1,producto2,producto3,producto4,producto5));
+			menu=(new Menu(nombre,id2,precio,producto1,producto2,producto3,producto4,producto5));
 		}
 		return menu;
 	}
 	
-	public void addManu(Menu menu, long id) throws Exception
+	public void addMenu(Menu menu, long id) throws Exception
 	{
 		DAOTablaRestauranteUs r = new DAOTablaRestauranteUs();
 		

@@ -11,17 +11,17 @@ import vos.AdministradorUs;
 public class DAOTablaAdministradorUs {
 	
 	/**
-	 * Arraylits de recursos que se usan para la ejecución de sentencias SQL
+	 * Arraylits de recursos que se usan para la ejecuciï¿½n de sentencias SQL
 	 */
 	private ArrayList<Object> recursos;
 
 	/**
-	 * Atributo que genera la conexión a la base de datos
+	 * Atributo que genera la conexiï¿½n a la base de datos
 	 */
 	private Connection conn;
 
 	/**
-	 * Método constructor que crea DAOTablaAdministradorUs
+	 * Mï¿½todo constructor que crea DAOTablaAdministradorUs
 	 * <b>post: </b> Crea la instancia del DAO e inicializa el Arraylist de recursos
 	 */
 	public DAOTablaAdministradorUs() {
@@ -29,7 +29,7 @@ public class DAOTablaAdministradorUs {
 	}
 
 	/**
-	 * Método que cierra todos los recursos que estan enel arreglo de recursos
+	 * Mï¿½todo que cierra todos los recursos que estan enel arreglo de recursos
 	 * <b>post: </b> Todos los recurso del arreglo de recursos han sido cerrados
 	 */
 	public void cerrarRecursos() {
@@ -44,7 +44,7 @@ public class DAOTablaAdministradorUs {
 	}
 
 	/**
-	 * Método que inicializa la connection del DAO a la base de datos con la conexión que entra como parámetro.
+	 * Mï¿½todo que inicializa la connection del DAO a la base de datos con la conexiï¿½n que entra como parï¿½metro.
 	 * @param con  - connection a la base de datos
 	 */
 	public void setConn(Connection con){
@@ -52,7 +52,7 @@ public class DAOTablaAdministradorUs {
 	}
 
 	/**
-	 * Método que, usando la conexión a la base de datos, saca todos los administradores de la base de datos
+	 * Mï¿½todo que, usando la conexiï¿½n a la base de datos, saca todos los administradores de la base de datos
 	 * <b>SQL Statement:</b> SELECT * FROM ADMINISTRADORUS;
 	 * @return Arraylist con los administradores de la base de datos.
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
@@ -78,8 +78,13 @@ public class DAOTablaAdministradorUs {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Método que busca el/los administrador/es con el nombre que entra como parámetro.
 	 * @param nombreBuscado - Nombre de el/los administrador/es a buscar
+=======
+	 * Mï¿½todo que busca el/los administrador/es con el nombre que entra como parï¿½metro.
+	 * @param name - Nombre de el/los administrador/es a buscar
+>>>>>>> 76f180f71017c4c9c0c2a2f3424463b5f11bb0f7
 	 * @return ArrayList con los administradores encontrados
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
@@ -104,7 +109,7 @@ public class DAOTablaAdministradorUs {
 	}
 	
 	/**
-	 * Método que busca el administrador con el id que entra como parámetro.
+	 * Mï¿½todo que busca el administrador con el id que entra como parï¿½metro.
 	 * @param name - Id de el administrador a buscar
 	 * @return administrador encontrado
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
@@ -132,7 +137,7 @@ public class DAOTablaAdministradorUs {
 	}
 
 	/**
-	 * Método que agrega el administrador que entra como parámetro a la base de datos.
+	 * Mï¿½todo que agrega el administrador que entra como parï¿½metro a la base de datos.
 	 * @param administrador - el administrador a agregar. administrador !=  null
 	 * <b> post: </b> se ha agregado el administrador a la base de datos en la transaction actual. pendiente que el administrador master
 	 * haga commit para que el administrador baje  a la base de datos.
@@ -154,7 +159,7 @@ public class DAOTablaAdministradorUs {
 	}
 
 	/**
-	 * Método que actualiza el administrador que entra como parámetro en la base de datos.
+	 * Mï¿½todo que actualiza el administrador que entra como parï¿½metro en la base de datos.
 	 * @param administrador - el administrador a actualizar. administrador !=  null
 	 * <b> post: </b> se ha actualizado el administrador en la base de datos en la transaction actual. pendiente que el administrador master
 	 * haga commit para que los cambios bajen a la base de datos.
@@ -176,7 +181,7 @@ public class DAOTablaAdministradorUs {
 	}
 
 	/**
-	 * Método que elimina el administrador que entra como parámetro en la base de datos.
+	 * Mï¿½todo que elimina el administrador que entra como parï¿½metro en la base de datos.
 	 * @param administrador - el administrador a borrar. administrador !=  null
 	 * <b> post: </b> se ha borrado el administrador en la base de datos en la transaction actual. pendiente que el administrador master
 	 * haga commit para que los cambios bajen a la base de datos.
@@ -191,6 +196,16 @@ public class DAOTablaAdministradorUs {
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		recursos.add(prepStmt);
 		prepStmt.executeQuery();
+	}
+
+	public boolean esAdmin(long id) {
+		try {
+			return buscarAdministradorPorId(id) != null;
+		} catch (SQLException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 

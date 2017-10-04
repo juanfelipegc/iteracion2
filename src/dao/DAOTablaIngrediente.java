@@ -14,10 +14,13 @@ public class DAOTablaIngrediente {
 	
 	private ArrayList<Object> recursos;
 	
-	public DAOTablaIngrediente(Connection co){
+	public DAOTablaIngrediente(){
 		super();
-		this.co = co;
 		recursos = new ArrayList<>();
+	}
+	
+	public void setConnection(Connection co){
+		this.co = co;
 	}
 	
 	public void cerrarRecursos() {
@@ -50,8 +53,8 @@ public class DAOTablaIngrediente {
 		return ingredientes;
 	}
 	
-	public ArrayList<Ingrediente> buscarIngredientePorId(String id) throws SQLException, Exception {
-		ArrayList<Ingrediente> ingrediente = new ArrayList<Ingrediente>();
+	public Ingrediente buscarIngredientePorId(Long id) throws SQLException, Exception {
+		Ingrediente ingrediente = null;
 
 		String sql = "SELECT * FROM INGREDEINTE WHERE ID_INGREDIENTE ='" + id + "'";
 
@@ -64,7 +67,7 @@ public class DAOTablaIngrediente {
 			String nombre = rs.getString("NOMBRE");
 			Double precio = rs.getDouble("PRECIO");
 			String traduccion = rs.getString("TRADUCCION");
-			ingrediente.add(new Ingrediente(nombre, precio,id2,traduccion));
+			ingrediente = (new Ingrediente(nombre, precio,id2,traduccion));
 		}
 		return ingrediente;
 	}

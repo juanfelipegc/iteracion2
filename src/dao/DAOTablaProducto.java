@@ -16,10 +16,13 @@ public class DAOTablaProducto {
 	
 	private ArrayList<Object> recursos;
 	
-	public DAOTablaProducto(Connection co){
+	public DAOTablaProducto(){
 		super();
-		this.co = co;
 		recursos = new ArrayList<>();
+	}
+	
+	public void setConnection(Connection co){
+		this.co = co;
 	}
 	
 	public void cerrarRecursos() {
@@ -33,7 +36,7 @@ public class DAOTablaProducto {
 		}
 	}
 	
-	public ArrayList<ProductoOrden> getProducto() throws SQLException, Exception {
+	public ArrayList<ProductoOrden> getProductos() throws SQLException, Exception {
 		ArrayList<ProductoOrden> producto = new ArrayList<ProductoOrden>();
 
 		String sql = "SELECT * FROM PRODUCTO";
@@ -58,8 +61,8 @@ public class DAOTablaProducto {
 		return producto;
 	}
 	
-	public ArrayList<Producto> buscarProductoPorId(String id) throws SQLException, Exception {
-		ArrayList<Producto> producto = new ArrayList<Producto>();
+	public ProductoOrden buscarProductoPorId(Long id) throws SQLException, Exception {
+		ProductoOrden producto = null;
 
 		String sql = "SELECT * FROM PRODUCTO WHERE ID_PRODUCTO ='" + id + "'";
 
@@ -78,7 +81,7 @@ public class DAOTablaProducto {
 			int tiempo = rs.getInt("TIEMPO");
 			String descripcion = rs.getString("DESCRIPCION");
 			String clasificacion = rs.getString("CLASIFICACION");
-			producto.add(new ProductoOrden(alcoholica,cantidad,clasificacion,costo,descripcion,id2,nombre,precio,tiempo,traduccion));
+			producto=(new ProductoOrden(alcoholica,cantidad,clasificacion,costo,descripcion,id2,nombre,precio,tiempo,traduccion));
 		}
 		return producto;
 	}
@@ -133,10 +136,10 @@ public class DAOTablaProducto {
 	
 	
 	public void addEquivalente(Long idP, Long idI,Long id)throws Exception{
-		//DAOTablaUsuarios r = new DAOTablaUsuarios(conn);
+		DAOTablaRestauranteUs r = new DAOTablaRestauranteUs();
 		
 		if(r.esRestaurante(id)){
-			String sql = "INSERT INTO PREODUCOT_INGREDIENTE(ID_P,ID_IN) VALUES ('"
+			String sql = "INSERT INTO PRODUCTO_INGREDIENTE(ID_P,ID_IN) VALUES ('"
 					+ idP + "','" + idI + "')";
 			PreparedStatement prep = co.prepareStatement(sql);
 			prep.executeQuery();
