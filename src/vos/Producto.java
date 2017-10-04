@@ -34,7 +34,7 @@ public interface Producto {
 	
 	public void setTiempoP(int tiempo);
 	
-	public int getCostoP();
+	public double getCostoP();
 	
-	public void setCostoP(int costo);
+	public void setCostoP(double costo);
 }

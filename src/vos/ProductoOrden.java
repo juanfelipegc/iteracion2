@@ -29,14 +29,14 @@ public class ProductoOrden implements Producto {
 	private String traduccion;
 	
 	@JsonProperty(value="costo")
-	private int costo;
+	private double costo;
 	
 	@JsonProperty(value="cantidad")
 	private int cantidad;
 	
 	
-	public ProductoOrden(boolean alcoholica, int cantidad, String clasificacion,int costo,
-			String descripcion,Long id, String nombre,int precio ,int tiempo, String traduccion){
+	public ProductoOrden(boolean alcoholica, int cantidad, String clasificacion,double costo,
+			String descripcion,Long id, String nombre,double precio ,int tiempo, String traduccion){
 		this.alcoholica = alcoholica;
 		this.cantidad = cantidad;
 		this.clasificacion = clasificacion;
@@ -141,12 +141,12 @@ public class ProductoOrden implements Producto {
 	}
 
 	@Override
-	public int getCostoP() {
+	public double getCostoP() {
 		return costo;
 	}
 
 	@Override
-	public void setCostoP(int costo) {
+	public void setCostoP(double costo) {
 		this.costo = costo;
 	}
 

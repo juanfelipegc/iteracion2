@@ -2,6 +2,9 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import vos.Ingrediente;
 
@@ -9,9 +12,61 @@ public class DAOTablaIngrediente {
 
 	private Connection co;
 	
+	private ArrayList<Object> recursos;
+	
 	public DAOTablaIngrediente(Connection co){
 		super();
 		this.co = co;
+		recursos = new ArrayList<>();
+	}
+	
+	public void cerrarRecursos() {
+		for(Object ob : recursos){
+			if(ob instanceof PreparedStatement)
+				try {
+					((PreparedStatement) ob).close();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+			}
+		}
+	}
+	
+	public ArrayList<Ingrediente> darIngredientes() throws SQLException, Exception {
+		ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+
+		String sql = "SELECT * FROM INGREDIENTE";
+
+		PreparedStatement prepStmt = co.prepareStatement(sql);
+		recursos.add(prepStmt);
+		ResultSet rs = prepStmt.executeQuery();
+
+		while (rs.next()) {
+			Long id2 = rs.getLong("ID_INGREDIENTE");
+			String nombre = rs.getString("NOMBRE");
+			Double precio = rs.getDouble("PRECIO");
+			String traduccion = rs.getString("TRADUCCION");
+			ingredientes.add(new Ingrediente(nombre, precio,id2,traduccion));
+		}
+		return ingredientes;
+	}
+	
+	public ArrayList<Ingrediente> buscarIngredientePorId(String id) throws SQLException, Exception {
+		ArrayList<Ingrediente> ingrediente = new ArrayList<Ingrediente>();
+
+		String sql = "SELECT * FROM INGREDEINTE WHERE ID_INGREDIENTE ='" + id + "'";
+
+		PreparedStatement prepStmt = co.prepareStatement(sql);
+		recursos.add(prepStmt);
+		ResultSet rs = prepStmt.executeQuery();
+
+		while (rs.next()) {
+			Long id2 = rs.getLong("ID_INGREDIENTE");
+			String nombre = rs.getString("NOMBRE");
+			Double precio = rs.getDouble("PRECIO");
+			String traduccion = rs.getString("TRADUCCION");
+			ingrediente.add(new Ingrediente(nombre, precio,id2,traduccion));
+		}
+		return ingrediente;
 	}
 	
 	public void addIngrediente(Ingrediente ingrediente, long id) throws Exception
@@ -28,6 +83,29 @@ public class DAOTablaIngrediente {
 			prepStmt.executeQuery();
 		}
 		else throw new Exception("Debe ser Restaurante para poder agregar un ingrediente");
+	}
+	
+	public void updateIngrediente(Ingrediente ingrediente) throws SQLException, Exception {
+
+		String sql = "UPDATE INGREDIENTE SET ";
+		sql += "NOMBRE=" + ingrediente.getNombre();
+		sql += ",PRECIO" + ingrediente.getPrecio();
+		sql += ",TRADUCCION" + ingrediente.getTraduccion();
+		sql += " WHERE ID_INGREDIENTE = '" + ingrediente.getID() + "'";
+
+		PreparedStatement prepStmt = co.prepareStatement(sql);
+		recursos.add(prepStmt);
+		prepStmt.executeQuery();
+	}
+	
+	public void deleteIngrediente(Ingrediente ingrediente) throws SQLException, Exception {
+
+		String sql = "DELETE FROM INGREDIENTE";
+		sql += " WHERE ID_INGREDIENTE = " + ingrediente.getID();
+
+		PreparedStatement prepStmt = co.prepareStatement(sql);
+		recursos.add(prepStmt);
+		prepStmt.executeQuery();
 	}
 	
 	public void addEquivalente(Long idIn1, Long idIn2,Long idRes )throws Exception{
