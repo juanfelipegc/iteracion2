@@ -25,7 +25,7 @@ public class ClienteUs extends Usuario{
 		this.cedula = cedula;
 	}
 	
-	public boolean getRegistrado()
+	public boolean isRegistrado()
 	{
 		return this.registrado;
 	}
