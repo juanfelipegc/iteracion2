@@ -15,10 +15,13 @@ private Connection co;
 	
 	private ArrayList<Object> recursos;
 	
-	public DAOTablaRestaurante(Connection co){
+	public DAOTablaRestaurante(){
 		super();
-		this.co = co;
 		recursos = new ArrayList<>();
+	}
+	
+	public void setConnection(Connection co){
+		this.co = co;
 	}
 	
 	public void cerrarRecursos() {
@@ -32,7 +35,7 @@ private Connection co;
 		}
 	}
 	
-	public ArrayList<Restaurante> getRestaurante() throws SQLException, Exception {
+	public ArrayList<Restaurante> getRestaurantes() throws SQLException, Exception {
 		ArrayList<Restaurante> restaurante = new ArrayList<Restaurante>();
 
 		String sql = "SELECT * FROM RESTAURANTE";
@@ -50,7 +53,7 @@ private Connection co;
 		return restaurante;
 	}
 	
-	public Restaurante buscarRestaurantePorId(String id) throws SQLException, Exception {
+	public Restaurante buscarRestaurantePorId(Long id) throws SQLException, Exception {
 		Restaurante restaurante = null;
 
 		String sql = "SELECT * FROM RESTAURANTE WHERE ID_RESTAURNATE ='" + id + "'";

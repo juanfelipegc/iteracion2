@@ -16,10 +16,13 @@ public class DAOTablaProducto {
 	
 	private ArrayList<Object> recursos;
 	
-	public DAOTablaProducto(Connection co){
+	public DAOTablaProducto(){
 		super();
-		this.co = co;
 		recursos = new ArrayList<>();
+	}
+	
+	public void setConnection(Connection co){
+		this.co = co;
 	}
 	
 	public void cerrarRecursos() {
@@ -33,7 +36,7 @@ public class DAOTablaProducto {
 		}
 	}
 	
-	public ArrayList<ProductoOrden> getProducto() throws SQLException, Exception {
+	public ArrayList<ProductoOrden> getProductos() throws SQLException, Exception {
 		ArrayList<ProductoOrden> producto = new ArrayList<ProductoOrden>();
 
 		String sql = "SELECT * FROM PRODUCTO";
@@ -58,8 +61,8 @@ public class DAOTablaProducto {
 		return producto;
 	}
 	
-	public Producto buscarProductoPorId(String id) throws SQLException, Exception {
-		Producto producto = null;
+	public ProductoOrden buscarProductoPorId(Long id) throws SQLException, Exception {
+		ProductoOrden producto = null;
 
 		String sql = "SELECT * FROM PRODUCTO WHERE ID_PRODUCTO ='" + id + "'";
 

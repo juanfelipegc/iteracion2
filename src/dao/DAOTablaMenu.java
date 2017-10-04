@@ -16,10 +16,13 @@ public class DAOTablaMenu {
 	
 	private Connection co;
 	
-	public DAOTablaMenu(Connection co){
+	public DAOTablaMenu(){
 		super();
-		this.co = co;
 		recursos = new ArrayList<>();
+	}
+	
+	public void setConnection(Connection co){
+		this.co = co;
 	}
 	
 	public void cerrarRecursos() {
@@ -33,7 +36,7 @@ public class DAOTablaMenu {
 		}
 	}
 	
-	public ArrayList<Menu> getMenu() throws SQLException, Exception {
+	public ArrayList<Menu> getMenus() throws SQLException, Exception {
 		ArrayList<Menu> menu = new ArrayList<Menu>();
 
 		String sql = "SELECT * FROM MENU";
@@ -56,7 +59,7 @@ public class DAOTablaMenu {
 		return menu;
 	}
 	
-	public Menu buscarMenuPorId(String id) throws SQLException, Exception {
+	public Menu buscarMenuPorId(Long id) throws SQLException, Exception {
 		Menu menu = null;
 
 		String sql = "SELECT * FROM MENU WHERE ID_MENU ='" + id + "'";

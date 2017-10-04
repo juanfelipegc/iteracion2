@@ -116,7 +116,7 @@ public class RestauranteService {
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(restaurantes).build();
+		return Response.status(200).entity(restaurante).build();
 	}
 	
 	/**
@@ -135,6 +135,6 @@ public class RestauranteService {
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(restaurantes).build();
+		return Response.status(200).entity(restaurante).build();
 	}
 }
