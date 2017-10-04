@@ -14,8 +14,11 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import tm.RotondAndesTM;
+import vos.Ingrediente;
+
 @Path("ingredientes")
-public class Ingrediente {
+public class IngredienteService {
 
 		/**
 		 * Servlet Context de la conexi�n actual
@@ -44,12 +47,13 @@ public class Ingrediente {
 		 *         que se produjo
 		 */
 		@GET
+		@Path("/ingredientes")
 		@Produces({ MediaType.APPLICATION_JSON })
 		public Response getIngredientes() {
-			//PuertoAndesMaster tm = new PuertoAndesMaster(getPath());
+			RotondAndesTM tm = new RotondAndesTM(getPath());
 			List<Ingrediente> ingredientes;
 			try {
-				ingredientes = tm.darIngredientes();
+				ingredientes = tm.getIngredientes();
 			} catch (Exception e) {
 				return Response.status(500).entity(doErrorMessage(e)).build();
 			}
@@ -63,10 +67,10 @@ public class Ingrediente {
 		 * @return Json con el resultado o con el error
 		 */
 		@GET
-		@Path("/id/{id}")
+		@Path("/ingredientes/{id}")
 		@Produces({ MediaType.APPLICATION_JSON })
 		public Response getIngrediente(@javax.ws.rs.PathParam("id") String id) {
-			//PuertoAndesMaster tm = new PuertoAndesMaster(getPath());
+			RotondAndesTM tm = new RotondAndesTM(getPath());			
 			Ingrediente ingrediente;
 			try {
 				ingrediente = tm.getIngrediente(id);
@@ -83,12 +87,11 @@ public class Ingrediente {
 	     * @return Json con el ingrediente que agrego o Json con el error que se produjo
 	     */
 		@POST
-		@Path("/exportador")
+		@Path("/ingredientes")
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response addIngrediente(Ingrediente ingrediente) {
-			//PuertoAndesMaster tm = new PuertoAndesMaster(getPath());
-			try {
+			RotondAndesTM tm = new RotondAndesTM(getPath());			try {
 				tm.addIngrediente(ingrediente);
 			} catch (Exception e) {
 				return Response.status(500).entity(doErrorMessage(e)).build();
@@ -107,7 +110,7 @@ public class Ingrediente {
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response updateIngrediente(Ingrediente ingrediente) {
-			//PuertoAndesMaster tm = new PuertoAndesMaster(getPath());
+			RotondAndesTM tm = new RotondAndesTM(getPath());	
 			try {
 				tm.updateIngrediente(ingrediente);
 			} catch (Exception e) {
@@ -127,7 +130,7 @@ public class Ingrediente {
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response deleteIngrediente(Ingrediente ingrediente) {
-			//PuertoAndesMaster tm = new PuertoAndesMaster(getPath());
+			RotondAndesTM tm = new RotondAndesTM(getPath());
 			try {
 				tm.deleteIngrediente(ingrediente);
 			} catch (Exception e) {
