@@ -5,17 +5,21 @@ import org.codehaus.jackson.annotate.JsonProperty;
 public class Orden {
 	
 	@JsonProperty(value="id")
-	private long id;
+	private Long id;
 	
 	@JsonProperty(value="idUsuario")
-	private long idUsuario;
+	private Long idUsuario;
+	
+	@JsonProperty(value="mesa")
+	private Integer mesa;
 	
 	@JsonProperty(value="costo")
 	private double costo;
 	
-	public Orden(@JsonProperty(value="id")long id, @JsonProperty(value="idUsuario")long idUsuario, @JsonProperty(value="costo")double costo){
+	public Orden(@JsonProperty(value="id")Long id, @JsonProperty(value="idUsuario")Long idUsuario, @JsonProperty(value="mesa")Integer mesa, @JsonProperty(value="costo")double costo){
 		setId(id);
 		setIdUsuario(idUsuario);
+		setMesa(mesa);
 		setCosto(costo);
 	}
 	
@@ -23,7 +27,7 @@ public class Orden {
 	 * @return El id.
 	 */
 	public long getId() {
-		return id;
+		return this.id;
 	}
 
 	/**
@@ -37,7 +41,7 @@ public class Orden {
 	 * @return El idUsuario asociado.
 	 */
 	public long getIdUsuario() {
-		return idUsuario;
+		return this.idUsuario;
 	}
 
 	/**
@@ -47,12 +51,25 @@ public class Orden {
 		this.idUsuario = idUsuario;
 	}
 
+	/**
+	 * @return La mesa.
+	 */
+	public Integer getMesa() {
+		return this.mesa;
+	}
+
+	/**
+	 * @param costo La mesa nueva.
+	 */
+	public void setMesa(Integer mesa) {
+		this.mesa = mesa;
+	}
 
 	/**
 	 * @return El costo.
 	 */
 	public double getCosto() {
-		return costo;
+		return this.costo;
 	}
 
 	/**
@@ -61,6 +78,4 @@ public class Orden {
 	public void setCosto(double costo) {
 		this.costo = costo;
 	}
-}
-
 }

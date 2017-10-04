@@ -49,86 +49,44 @@ public class Zona {
 	//Metodos
 	//------------------------------------
 	
-
-
 	public Long getId() {
 		return id;
 	}
-
-
-
-
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
-
-
-
 	public boolean isAbierto() {
 		return abierto;
 	}
-
-
-
-
 
 	public void setAbierto(boolean abierto) {
 		this.abierto = abierto;
 	}
 
-
-
-
-
 	public boolean isDiscapacitados() {
 		return discapacitados;
 	}
-
-
-
-
 
 	public void setDiscapacitados(boolean discapacitados) {
 		this.discapacitados = discapacitados;
 	}
 
-
-
-
-
 	public String getCondiciones() {
 		return condiciones;
 	}
-
-
-
-
 
 	public void setCondicones(String condiciones) {
 		this.condiciones = condiciones;
 	}
 
-
-
-
-
 	public Integer getCapacidad() {
 		return capacidad;
 	}
 
-
-
-
-
 	public void setCapacidad(Integer capacidad) {
 		this.capacidad = capacidad;
 	}
-	
-
-	
-	
 
 }
