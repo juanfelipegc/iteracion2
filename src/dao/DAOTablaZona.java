@@ -160,7 +160,7 @@ public class DAOTablaZona {
 	 * @throws SQLException - Cualquier error que la base de datos arroje. No pudo actualizar el video.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
-	public void deleteVideo(Zona zona) throws SQLException, Exception {
+	public void deleteZona(Zona zona) throws SQLException, Exception {
 
 		String sql = "DELETE FROM ZONA";
 		sql += " WHERE ID = " + zona.getId();
