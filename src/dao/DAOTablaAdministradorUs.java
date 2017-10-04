@@ -78,13 +78,8 @@ public class DAOTablaAdministradorUs {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Método que busca el/los administrador/es con el nombre que entra como parámetro.
 	 * @param nombreBuscado - Nombre de el/los administrador/es a buscar
-=======
-	 * Mï¿½todo que busca el/los administrador/es con el nombre que entra como parï¿½metro.
-	 * @param name - Nombre de el/los administrador/es a buscar
->>>>>>> 76f180f71017c4c9c0c2a2f3424463b5f11bb0f7
 	 * @return ArrayList con los administradores encontrados
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
