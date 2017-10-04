@@ -85,7 +85,7 @@ public class DAOTablaProducto {
 	
 	public void addProducto(ProductoOrden producto, long id) throws Exception
 	{
-		//DAOTablaUsuarios r = new DAOTablaUsuarios(co);
+		DAOTablaRestauranteUs r = new DAOTablaRestauranteUs();
 		
 		if(r.esRestaurante(id))
 		{

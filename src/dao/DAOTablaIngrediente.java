@@ -71,7 +71,7 @@ public class DAOTablaIngrediente {
 	
 	public void addIngrediente(Ingrediente ingrediente, long id) throws Exception
 	{
-		//DAOTablaUsuarios r = new DAOTablaUsuarios(conn);
+		DAOTablaRestauranteUs r = new DAOTablaRestauranteUs();
 		
 		if(r.esRestaurante(id))
 		{
@@ -109,7 +109,7 @@ public class DAOTablaIngrediente {
 	}
 	
 	public void addEquivalente(Long idIn1, Long idIn2,Long idRes )throws Exception{
-		//DAOTablaUsuarios r = new DAOTablaUsuarios(conn);
+		DAOTablaRestauranteUs r = new DAOTablaRestauranteUs();
 		
 		if(r.esRestaurante(idRes)){
 			String sql = "INSERT INTO EQUIVALENTE(ID_IN1,ID_IN2,ID_REST) VALUES ('"

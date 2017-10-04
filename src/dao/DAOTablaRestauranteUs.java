@@ -11,17 +11,17 @@ import vos.RestauranteUs;
 public class DAOTablaRestauranteUs {
 	
 	/**
-	 * Arraylits de recursos que se usan para la ejecución de sentencias SQL
+	 * Arraylits de recursos que se usan para la ejecuciï¿½n de sentencias SQL
 	 */
 	private ArrayList<Object> recursos;
 
 	/**
-	 * Atributo que genera la conexión a la base de datos
+	 * Atributo que genera la conexiï¿½n a la base de datos
 	 */
 	private Connection conn;
 
 	/**
-	 * Método constructor que crea DAOTablaRestaurante
+	 * Mï¿½todo constructor que crea DAOTablaRestaurante
 	 * <b>post: </b> Crea la instancia del DAO e inicializa el Arraylist de recursos
 	 */
 	public DAOTablaRestauranteUs() {
@@ -29,7 +29,7 @@ public class DAOTablaRestauranteUs {
 	}
 
 	/**
-	 * Método que cierra todos los recursos que estan enel arreglo de recursos
+	 * Mï¿½todo que cierra todos los recursos que estan enel arreglo de recursos
 	 * <b>post: </b> Todos los recurso del arreglo de recursos han sido cerrados
 	 */
 	public void cerrarRecursos() {
@@ -44,7 +44,7 @@ public class DAOTablaRestauranteUs {
 	}
 
 	/**
-	 * Método que inicializa la connection del DAO a la base de datos con la conexión que entra como parámetro.
+	 * Mï¿½todo que inicializa la connection del DAO a la base de datos con la conexiï¿½n que entra como parï¿½metro.
 	 * @param con  - connection a la base de datos
 	 */
 	public void setConn(Connection con){
@@ -52,7 +52,7 @@ public class DAOTablaRestauranteUs {
 	}
 
 	/**
-	 * Método que, usando la conexión a la base de datos, saca todos los restaurantes de la base de datos
+	 * Mï¿½todo que, usando la conexiï¿½n a la base de datos, saca todos los restaurantes de la base de datos
 	 * <b>SQL Statement:</b> SELECT * FROM RESTAURANTEUS;
 	 * @return Arraylist con los restaurantes de la base de datos.
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
@@ -78,7 +78,7 @@ public class DAOTablaRestauranteUs {
 	}
 
 	/**
-	 * Método que busca el/los restaurantes con el nombre que entra como parámetro.
+	 * Mï¿½todo que busca el/los restaurantes con el nombre que entra como parï¿½metro.
 	 * @param nombreBuscado - Nombre de el/los restaurantes a buscar
 	 * @return ArrayList con los restaurantes encontrados
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
@@ -106,7 +106,7 @@ public class DAOTablaRestauranteUs {
 
 
 	/**
-	 * Método que busca el restaurante con el id que entra como parámetro.
+	 * Mï¿½todo que busca el restaurante con el id que entra como parï¿½metro.
 	 * @param idBuscado - Id de el restaurante a buscar
 	 * @return restaurante encontrado
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
@@ -134,7 +134,7 @@ public class DAOTablaRestauranteUs {
 	}
 
 	/**
-	 * Método que agrega el restaurante que entra como parámetro a la base de datos.
+	 * Mï¿½todo que agrega el restaurante que entra como parï¿½metro a la base de datos.
 	 * @param restaurante - el restaurante a agregar. restaurante !=  null
 	 * <b> post: </b> se ha agregado el restaurante a la base de datos en la transaction actual. pendiente que el restaurante master
 	 * haga commit para que el restaurante baje  a la base de datos.
@@ -156,7 +156,7 @@ public class DAOTablaRestauranteUs {
 	}
 
 	/**
-	 * Método que actualiza el restaurante que entra como parámetro en la base de datos.
+	 * Mï¿½todo que actualiza el restaurante que entra como parï¿½metro en la base de datos.
 	 * @param restaurante - el restaurante a actualizar. restaurante !=  null
 	 * <b> post: </b> se ha actualizado el restaurante en la base de datos en la transaction actual. pendiente que el restaurante master
 	 * haga commit para que los cambios bajen a la base de datos.
@@ -178,7 +178,7 @@ public class DAOTablaRestauranteUs {
 	}
 
 	/**
-	 * Método que elimina el restaurante que entra como parámetro en la base de datos.
+	 * Mï¿½todo que elimina el restaurante que entra como parï¿½metro en la base de datos.
 	 * @param restaurante - el restaurante a borrar. restaurante !=  null
 	 * <b> post: </b> se ha borrado el restaurante en la base de datos en la transaction actual. pendiente que el restaurante master
 	 * haga commit para que los cambios bajen a la base de datos.
@@ -196,6 +196,13 @@ public class DAOTablaRestauranteUs {
 	}
 
 	
+	public boolean esRestaurante(Long id){
+		try {
+			return (buscarRestauranteUsPorId(id) != null);
+		} catch (Exception e) {
+			return false;
+		}
+	}
 	
 	
 	

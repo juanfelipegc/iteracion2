@@ -81,7 +81,7 @@ public class DAOTablaMenu {
 	
 	public void addManu(Menu menu, long id) throws Exception
 	{
-		//DAOTablaUsuarios r = new DAOTablaUsuarios(co);
+		DAOTablaRestauranteUs r = new DAOTablaRestauranteUs();
 		
 		if(r.esRestaurante(id))
 		{
