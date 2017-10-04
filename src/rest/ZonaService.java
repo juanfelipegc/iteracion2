@@ -9,7 +9,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
@@ -25,13 +24,13 @@ public class ZonaService {
 
 
 	/**
-	 * Atributo que usa la anotacion @Context para tener el ServletContext de la conexion actual.
+	 * Atributo que usa la anotacion @Context para tener el ServletContext de la conexión actual.
 	 */
 	@Context
 	private ServletContext context;
 
 	/**
-	 * Metodo que retorna el path de la carpeta WEB-INF/ConnectionData en el deploy actual dentro del servidor.
+	 * Método que retorna el path de la carpeta WEB-INF/ConnectionData en el deploy actual dentro del servidor.
 	 * @return path de la carpeta WEB-INF/ConnectionData en el deploy actual.
 	 */
 	private String getPath() {
@@ -45,10 +44,10 @@ public class ZonaService {
 	
 
 	/**
-	 * Metodo que expone servicio REST usando GET que da todos los videos de la base de datos.
-	 * <b>URL: </b> http://"ip o nombre de host":8080/VideoAndes/rest/videos
-	 * @return Json con todos los videos de la base de datos o json con 
-     * el error que se produjo
+	 * Método que expone servicio REST usando GET que da todas las zonas de la base de datos.
+	 * <b>URL: </b> http://"ip o nombre de host":8080/RotondAndes/rest/zonas
+	 * @return Json con todas las zonas de la base de datos o json con 
+     * el error que se produjo.
 	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
@@ -64,22 +63,22 @@ public class ZonaService {
 	}
 
     /**
-     * Metodo que expone servicio REST usando GET que busca el video con el nombre que entra como parametro
-     * <b>URL: </b> http://"ip o nombre de host":8080/VideoAndes/rest/videos/nombre/nombre?nombre=<<nombre>>" para la busqueda"
-     * @param name - Nombre del video a buscar que entra en la URL como parametro 
-     * @return Json con el/los videos encontrados con el nombre que entra como parametro o json con 
-     * el error que se produjo
+     * Método que expone servicio REST usando GET que busca la zona con el id que entra como parámetro
+     * <b>URL: </b> http://"ip o nombre de host":8080/RotondAndes/rest/zonas/id/id?id=<<id>>" para la búsqueda"
+     * @param id - Id de la zona a buscar que entra en la URL como parámetro 
+     * @return Json con la/s zona/s encontrada/s con el id que entra como parámetro o json con 
+     * el error que se produjo.
      */
 	@GET
-	@Path( "{nombre}" )
+	@Path( "{id}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getZonaName( @QueryParam("nombre") String name) {
+	public Response getZonaId( @QueryParam("id") Long id) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 		List<Zona> zonas;
 		try {
-			if (name == null || name.length() == 0)
-				throw new Exception("Nombre del video no valido");
-			zonas = tm.buscarZonasPorName(name);
+			if (id == null)
+				throw new Exception("id de la zona no valido");
+			zonas = tm.buscarZonasPorId(id);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
@@ -88,10 +87,10 @@ public class ZonaService {
 
 
     /**
-     * Metodo que expone servicio REST usando POST que agrega el video que recibe en Json
-     * <b>URL: </b> http://"ip o nombre de host":8080/VideoAndes/rest/videos/video
-     * @param video - video a agregar
-     * @return Json con el video que agrego o Json con el error que se produjo
+     * Método que expone servicio REST usando POST que agrega la zona que recibe en Json
+     * <b>URL: </b> http://"ip o nombre de host":8080/RotondAndes/rest/zonas/zona
+     * @param zona - zona a agregar
+     * @return Json con la zona que agregó o Json con el error que se produjo.
      */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -107,10 +106,10 @@ public class ZonaService {
 	}
 	
     /**
-     * Metodo que expone servicio REST usando POST que agrega los videos que recibe en Json
-     * <b>URL: </b> http://"ip o nombre de host":8080/VideoAndes/rest/videos/varios
-     * @param videos - videos a agregar. 
-     * @return Json con el video que agrego o Json con el error que se produjo
+     * Método que expone servicio REST usando POST que agrega las zonas que recibe en Json
+     * <b>URL: </b> http://"ip o nombre de host":8080/RotondAndes/rest/zonas/varios
+     * @param zonas - zonas a agregar. 
+     * @return Json con las zonas que agregó o Json con el error que se produjo.
      */
 	@POST
 	@Path("/varios")
@@ -127,10 +126,10 @@ public class ZonaService {
 	}
 	
     /**
-     * Metodo que expone servicio REST usando PUT que actualiza el video que recibe en Json
-     * <b>URL: </b> http://"ip o nombre de host":8080/VideoAndes/rest/videos
-     * @param video - video a actualizar. 
-     * @return Json con el video que actualizo o Json con el error que se produjo
+     * Método que expone servicio REST usando PUT que actualiza la zona que recibe en Json
+     * <b>URL: </b> http://"ip o nombre de host":8080/RotondAndes/rest/zonas
+     * @param zona - zona a actualizar. 
+     * @return Json con la zona que actualizó o Json con el error que se produjo.
      */
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -146,10 +145,10 @@ public class ZonaService {
 	}
 	
     /**
-     * Metodo que expone servicio REST usando DELETE que elimina el video que recibe en Json
-     * <b>URL: </b> http://"ip o nombre de host":8080/VideoAndes/rest/videos
-     * @param video - video a aliminar. 
-     * @return Json con el video que elimino o Json con el error que se produjo
+     * Método que expone servicio REST usando DELETE que elimina la zona que recibe en Json
+     * <b>URL: </b> http://"ip o nombre de host":8080/RotondAndes/rest/zonas
+     * @param zona - zona a aliminar. 
+     * @return Json con la zona que elimino o Json con el error que se produjo.
      */
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)

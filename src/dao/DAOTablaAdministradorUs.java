@@ -79,15 +79,15 @@ public class DAOTablaAdministradorUs {
 
 	/**
 	 * Método que busca el/los administrador/es con el nombre que entra como parámetro.
-	 * @param name - Nombre de el/los administrador/es a buscar
+	 * @param nombreBuscado - Nombre de el/los administrador/es a buscar
 	 * @return ArrayList con los administradores encontrados
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
-	public ArrayList<AdministradorUs> buscarAdministradorPorName(String name) throws SQLException, Exception {
+	public ArrayList<AdministradorUs> buscarAdministradorPorNombre(String nombreBuscado) throws SQLException, Exception {
 		ArrayList<AdministradorUs> administradores = new ArrayList<AdministradorUs>();
 
-		String sql = "SELECT * FROM ADMINISTRADORUS WHERE NOMBRE ='" + name + "'";
+		String sql = "SELECT * FROM ADMINISTRADORUS WHERE NOMBRE ='" + nombreBuscado + "'";
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		recursos.add(prepStmt);

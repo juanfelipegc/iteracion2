@@ -398,11 +398,11 @@ public class RotondAndesTM {
 
 			/**
 			 * Método que modela la transacción que busca el/los administrador/es en la base de datos con el nombre entra como parámetro.
-			 * @param name - Nombre de los administradores a buscar. name != null
+			 * @param nombre - Nombre de los administradores a buscar. name != null
 			 * @return administradores - objeto que modela  un arreglo de administradores. Este arreglo contiene el resultado de la búsqueda
 			 * @throws Exception -  cualquier error que se genere durante la transacción
 			 */
-			public List<AdministradorUs> buscarAdministradoresUsPorName(String nombre) throws Exception {
+			public List<AdministradorUs> buscarAdministradoresUsPorNombre(String nombre) throws Exception {
 				List<AdministradorUs> administradores;
 				DAOTablaAdministradorUs daoAdministradoresUs = new DAOTablaAdministradorUs();
 				try 
@@ -410,7 +410,7 @@ public class RotondAndesTM {
 					//////transacción
 					this.conn = darConexion();
 					daoAdministradoresUs.setConn(conn);
-					administradores = daoAdministradoresUs.buscarAdministradorPorName(nombre);
+					administradores = daoAdministradoresUs.buscarAdministradorPorNombre(nombre);
 
 				} catch (SQLException e) {
 					System.err.println("SQLException:" + e.getMessage());
@@ -707,7 +707,7 @@ public class RotondAndesTM {
 			 * @return Listaclientes - objeto que modela  un arreglo de clientes. este arreglo contiene el resultado de la búsqueda
 			 * @throws Exception -  cualquier error que se genere durante la transaccion
 			 */
-			public List<ClienteUs> buscarClientesUsPorName(String nombre) throws Exception {
+			public List<ClienteUs> buscarClientesUsPorNombre(String nombre) throws Exception {
 				List<ClienteUs> clientes;
 				DAOTablaClienteUs daoClienteUs = new DAOTablaClienteUs();
 				try 
@@ -715,7 +715,7 @@ public class RotondAndesTM {
 					//////transaccion
 					this.conn = darConexion();
 					daoClienteUs.setConn(conn);
-					clientes = daoClienteUs.buscarClientePorName(nombre);
+					clientes = daoClienteUs.buscarClientePorNombre(nombre);
 
 				} catch (SQLException e) {
 					System.err.println("SQLException:" + e.getMessage());
@@ -975,7 +975,7 @@ public class RotondAndesTM {
 			 * @return Listarestauranteuss - objeto que modela  un arreglo de restauranteuss. este arreglo contiene el resultado de la búsqueda
 			 * @throws Exception -  cualquier error que se genere durante la transacción
 			 */
-			public List<RestauranteUs> buscarRestauranteUsPorName(String nombre) throws Exception {
+			public List<RestauranteUs> buscarRestauranteUsPorNombre(String nombre) throws Exception {
 				List<RestauranteUs> restaurantesUs;
 				DAOTablaRestauranteUs daoRestaurantesUs = new DAOTablaRestauranteUs();
 				try 

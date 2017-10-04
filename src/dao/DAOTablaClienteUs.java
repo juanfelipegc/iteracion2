@@ -87,7 +87,7 @@ public class DAOTablaClienteUs {
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
-	public ArrayList<ClienteUs> buscarClientePorName(String nombreBuscado) throws SQLException, Exception {
+	public ArrayList<ClienteUs> buscarClientePorNombre(String nombreBuscado) throws SQLException, Exception {
 		ArrayList<ClienteUs> clientes = new ArrayList<ClienteUs>();
 
 		String sql = "SELECT * FROM CLIENTEUS WHERE NOMBRE ='" + nombreBuscado + "'";
