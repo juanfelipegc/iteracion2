@@ -16,7 +16,7 @@ public class Ingrediente {
 	@JsonProperty(value="traduccion")
 	private String traduccion;
 	
-	public Ingrediente(String nombre, int precio, Long id, String traduccion){
+	public Ingrediente(String nombre, double precio, Long id, String traduccion){
 		this.nombre = nombre;
 		this.precio = precio;
 		this.id = id;
