@@ -14,17 +14,17 @@ public interface Producto {
 	
 	public void setDescripcion(String descripcion);
 	
-	public int getPrecio();
+	public double getPrecio();
 	
-	public void setPrecio(int precio);
+	public void setPrecio(double precio);
 	
-	public int getClasificacion();
+	public String getClasificacion();
 	
-	public void setClasificacion(int clasificacion);
+	public void setClasificacion(String clasificacion);
 	
 	public boolean getAlcolica();
 	
-	public void setAlcoholica(boolean precio);
+	public void setAlcoholica(boolean alcoholica);
 	
 	public String getTraduccion();
 	

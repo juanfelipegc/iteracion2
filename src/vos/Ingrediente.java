@@ -8,13 +8,20 @@ public class Ingrediente {
 	private String nombre;
 	
 	@JsonProperty(value="precio")
-	private int precio;
+	private double precio;
 	
 	@JsonProperty(value="id_Ingrediente")
 	private Long id;
 	
 	@JsonProperty(value="traduccion")
 	private String traduccion;
+	
+	public Ingrediente(String nombre, int precio, Long id, String traduccion){
+		this.nombre = nombre;
+		this.precio = precio;
+		this.id = id;
+		this.traduccion = traduccion;
+	}
 	
 	public String getNombre(){
 		return nombre;
@@ -24,11 +31,11 @@ public class Ingrediente {
 		this.nombre = nombre;
 	}
 	
-	public int getPrecio(){
+	public double getPrecio(){
 		return precio;
 	}
 	
-	public void setPrecio(int precio){
+	public void setPrecio(double precio){
 		this.precio = precio;
 	}
 	

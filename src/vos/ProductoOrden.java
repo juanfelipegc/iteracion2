@@ -14,7 +14,7 @@ public class ProductoOrden implements Producto {
 	private String nombre;
 	
 	@JsonProperty(value="precio")
-	private int precio;
+	private double precio;
 	
 	@JsonProperty(value="descripcion")
 	private String descripcion;
@@ -23,7 +23,7 @@ public class ProductoOrden implements Producto {
 	private int tiempo;
 	
 	@JsonProperty(value="clasificacion")
-	private int clasificacion;
+	private String clasificacion;
 	
 	@JsonProperty(value="traduccion")
 	private String traduccion;
@@ -31,7 +31,32 @@ public class ProductoOrden implements Producto {
 	@JsonProperty(value="costo")
 	private int costo;
 	
+	@JsonProperty(value="cantidad")
+	private int cantidad;
 	
+	
+	public ProductoOrden(boolean alcoholica, int cantidad, String clasificacion,int costo,
+			String descripcion,Long id, String nombre,int precio ,int tiempo, String traduccion){
+		this.alcoholica = alcoholica;
+		this.cantidad = cantidad;
+		this.clasificacion = clasificacion;
+		this.costo = costo;
+		this.descripcion = descripcion;
+		this.id = id;
+		this.nombre = nombre;
+		this.precio = precio;
+		this.tiempo = tiempo;
+		this.traduccion = traduccion;
+		
+	}
+	
+	public int getCantidad(){
+		return cantidad;
+	}
+	
+	public void setCantidad(int cantidad){
+		this.cantidad = cantidad;
+	}
 	
 	@Override
 	public Long getID() {
@@ -66,71 +91,63 @@ public class ProductoOrden implements Producto {
 	}
 
 	@Override
-	public int getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
 	@Override
-	public void setPrecio(int precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 
 	@Override
-	public int getClasificacion() {
+	public String getClasificacion() {
 		return clasificacion;
 	}
 
 	@Override
-	public void setClasificacion(int clasificacion) {
+	public void setClasificacion(String clasificacion) {
 		this.clasificacion = clasificacion;
 	}
 
 	@Override
 	public boolean getAlcolica() {
-		// TODO Auto-generated method stub
-		return false;
+		return alcoholica;
 	}
 
 	@Override
-	public void setClasificacion(boolean precio) {
-		// TODO Auto-generated method stub
-
+	public void setAlcoholica(boolean alcoholica) {
+		this.alcoholica = alcoholica;
 	}
 
 	@Override
 	public String getTraduccion() {
-		// TODO Auto-generated method stub
-		return null;
+		return traduccion;
 	}
 
 	@Override
 	public void setTraduccion(String traduccion) {
-		// TODO Auto-generated method stub
-
+		this.traduccion = traduccion;
 	}
 
 	@Override
 	public int getTiempoP() {
-		// TODO Auto-generated method stub
-		return 0;
+		return tiempo;
 	}
 
 	@Override
 	public void setTiempoP(int tiempo) {
-		// TODO Auto-generated method stub
-
+		this.tiempo = tiempo;
 	}
 
 	@Override
 	public int getCostoP() {
-		// TODO Auto-generated method stub
-		return 0;
+		return costo;
 	}
 
 	@Override
 	public void setCostoP(int costo) {
-		// TODO Auto-generated method stub
-
+		this.costo = costo;
 	}
 
 }
